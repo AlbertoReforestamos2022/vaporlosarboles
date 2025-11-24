@@ -5,9 +5,7 @@
 ## Verde tertiary: rgba(128,255,0, .6);
 ## Café primary: rgba(96, 72, 43, 1);
 
-
-
-## Estructura
+## Estructura del template
 
 vaporlosarboles(theme)
  |
@@ -36,4 +34,11 @@ vaporlosarboles(theme)
  |──── package.json
  |
  └── style.css
+
+
+<h3>Despues de clonar el repositorio</h3>
+
+<p>instalar la versión 5 de Bootstrap con npm install bootstrap@v5.3.7</p>
+.....
+
 
