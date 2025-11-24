@@ -1,0 +1,11 @@
+// importar funciones
+@import "../../node_modules/bootstrap/scss/functions";
+
+// archivo scss custom 
+@import 'custom';
+
+@import "../../node_modules/bootstrap/scss/variables";
+
+@import "../../node_modules/bootstrap/scss/mixins";
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

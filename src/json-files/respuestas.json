@@ -1,0 +1,119 @@
+{
+    "preguntas": [
+        {
+            "pregunta" : "¿Cómo puedo identificar los árboles de mi alrededor?",
+            "respuesta" : [
+                "Observa las características primarias como la floración y frutos, también hojas, corteza del tronco y la forma de la copa del árbol.",
+                "Usa herramientas o aplicaciones digitales como iNaturalist, Seek, iDArbol, PlatNet, Botánica Morfológica, para identificar los árboles.",
+                "Consulta la Guía de Arboles Comunes de la Ciudad de México.",
+                "Captura en fotografías: flores, frutos, hojas y acude a un experto en el jardín botánico más cercano de tu localidad.",
+                "Identificar los ejemplares, te ayudará a cuidarlo mejor."
+            ]
+        }, 
+        {
+            "pregunta" : "¿Cada cuando tengo que regar mi árbol?",
+            "respuesta" : [
+                "Para saber con qué frecuencia regar tu árbol, considera su edad y especie.",
+                "Los árboles jóvenes y los recién plantados requieren riego constante, preferiblemente dos veces por semana.",
+                "Los árboles adultos pueden necesitar riego cada dos o tres semanas, dependiendo del clima y el tipo de suelo. ",
+                "Siempre verifica la humedad del suelo antes de regar para evitar el exceso de agua."
+            ]
+        }, 
+        {
+            "pregunta" : "¿Cómo puedo cuidar de un árbol adulto?",
+            "respuesta" : [
+                "Vigila que su tierra esté húmeda. De ser posible, riégalo una vez al mes, especialmente durante la sequía.",
+                "Aplica una capa de triturado de madera u hojas secas debajo de la copa para conservar la humedad y proteger las raíces.",
+                "Consulta a un arborista con acreditaciones para identificar la mejora de suelo.",
+                "Retira los objetos ajenos, como cables, luces, cámaras, lazos, ya que dañan su corteza y lo hacen vulnerable a enfermedades. ",
+                "Evita encalar o pintarlo, ya que puede alterar el pH del suelo. ",
+                "Limita el paso de transeúntes en el área cercana al tronco y debajo de la copa para evitar la compactación del suelo."
+
+            ]
+        }, 
+        {
+            "pregunta" : "¿Debo barrer las hojas del árbol?",
+            "respuesta" : [
+                "No, dejarlas es benéfico. La hojarasca actúa como cubierta natural, ayudando a conservar la humedad del suelo y protege las raíces; reduce la necesidad de riego constante y previene la erosión.",
+                "Al descomponerse, las hojas aportan nutrientes al suelo, como el nitrógeno, fósforo y potasio.",
+                "Es habitat de pequenos insectos, lombrices y también microorganismos que mejoran la salud del suelo y las raíces.Además, son refugio para reptiles o mamíferos pequeños."
+            ]
+        }, 
+        {
+            "pregunta" : "¿El suelo es importante para los árboles urbanos?",
+            "respuesta" : [
+                "Un suelo bien nutrido proporciona un entorno más saludable para las raíces y los microorganismos, lo que mejora la absorción de agua y nutrientes.",
+                "Estos ayudan a que el árbol crezca fuerte y sea más resistente a las condiciones adversas de la ciudad, como la acumulación de partículas contaminantes o plagas. ",
+                "Además, un suelo enriquecido permite que las raíces se desarrollen adecuadamente y aumente la capacidad del árbol para soportar el estrés hídrico, las altas temperaturas o las enfermedades."         
+            ]
+        }, 
+        {
+            "pregunta" : "¿Es correcto colocar cemento en el árbol?",
+            "respuesta" : [
+                "No, los cajetes de los árboles (el área debajo de la copa del árbol) debe estar sin barreras físicas como el cemento, ya que evitan la absorción y filtración de agua.",
+                "Si el árbol está rodeado de cemento, es recomendable quitarlo, ya que evita que las raices se asfixien y permite una mejor filtración y acceso a los nutrientes esenciales.",
+                "El retiro del cemento es una acción que debe realizarse con la ayuda de un arborista, que pueda evaluar que no haya inconvenientes ni danos a las raíces al momento del retiro.",
+                "También, descompactar el suelo es importante porque mejora la aireación para beneficio de las raíces del árbol."
+            ]
+        }, 
+        {
+            "pregunta" : "¿Puedo plantar un árbol en cualquier lugar?",
+            "respuesta" : [
+                "Plantar un árbol requiere planificación.",
+                "Verifica la normatividad local para conocer las especies nativasy las distancias recomendadas para plantar.",
+                "Considera la proximidad a estructuras, cables eléctricos y tuberías subterráneas.",
+                "Debes evaluar si el espacio es suficiente para el crecimiento del árbol y si el suelo es adecuado.",
+                "La infraestructura y la plantación de árboles no están peleadas; incluye a los árboles como parte del diseño arquitectónico y el paisaje urbano. ",
+                "Imagina cómo se verá un árbol grande y frondoso en el futuro."
+            ]
+        }, 
+        {
+            "pregunta" : "¿Dónde puedo adquirir un árbol en el Valle de México?",
+            "respuesta" : [
+                "Vivero Nezahualcóyotl Avenida Leandro Valle (Prolongación Canal de Chalco) s/n, Col. Ciénega Grande, Xochimilco. 55-5845-5703, extensión 112.",
+                "Jardín Botánico de la UNAM C.U., Coyoacán, C.P. 04510 Ciudad de México, CDMX  Facebook: @JBUNAM Instagram: @jbunam https://www.ib.unam.mx/ib/jb/",
+                "Nativas de México Metepec, México, C.P. 52172 722 636 0463, Facebook: Vivero Nativas de México, Instagram: vivero_nativas_de_mexico",
+                "Nativas del Centro Cuautitlan Izcalli, 55 48 60 20 18, Facebook: Vivero Nativas del Centro, Instagram: nativas_centro, https://nativascentro.com/",
+                "Vivero PROBOSQUE, Vivero de Toluca, Toluca, Estado de México. Carretera Toluca - Temascaltepec, km 13, Municipio de Toluca, Estado de México. +52 (722) 234 5678",
+                "Viveros La antigua esperanza, Ahuejote #61 entre Coyamel y Pedro Enríquez Ureña, Santo Domingo, Coyoacán, Tel:  222 754 1433, Facebook: Viveros La Antigua Esperanza Plant Lovermx, Instagram: la_antigua_esperanza",
+                "Paraíso Colibrí, Centro de Jardineria en Puebla de Zarago, Facebook: Paraiso colibrí, Instagram: paraiso_colibri, https://www.paraisocolibri.org",
+                "Suculentas de México, Bezana los San Manueles, San Miguel, Totolcingo, C.P. 55884 San Miguel, Totolcingo, Méx., Facebook: viverosuculentasmx"
+
+            ]
+        }, 
+        {
+            "pregunta" : "Cómo plantar un árbol?",
+            "respuesta" : [
+                "Consulta la NADF-001-RNAT-2015 de la Ciudad de México, que establece los requisitos y especificaciones técnicas para el cuidado del arbolado y las palmeras. Consulta la normatividad aplicable en tu localidad.",
+                "Elige un lugar adecuado con suficiente espacio y buen drenaje.",
+                "Cava un hoyo dos veces más ancho que el cepellón del árbol y 10 cm más profundo que el cepellón; descompacta alrededor.",
+                "Coloca el árbol en el hoyo y asegúrate de que esté centrado y recto; verifica que el cuello del tronco no este ahogado o por encima del nivel del suelo.",
+                "Rellena con tierra, compacta ligeramente con tus manos o pies y riega abundantemente.",
+                "Añade una capa de mulch, triturado de madera u hojarasca alrededor de la base para conservar la humedad.",
+                "Asegúrate de regar semanalmente durante el primer año, mientras no sea época de lluvia."
+            ]
+        }, 
+        {
+            "pregunta" : "¿Qué puedo hacer en caso de ver una poda o derribo de un árbol?",
+            "respuesta" : [
+                "Si presencias una poda o derribo de un árbol, acércate y pregunta si las personas que lo realizan cuentan con los permisos necesarios de las autoridades.",
+                "En caso de que no tengan permisos, llama a la policía y acude a las autoridades ambientales locales, como la PAOT, para denunciar el hecho. ",
+                "También puedes documentar el incidente con fotos y videos como evidencia para la denuncia o la solicitud de información.",
+                "Participa en los comités vecinales para ayudar a informar a las personas y organízate para proteger y vigilar los árboles en tu colonia."
+
+            ]
+        }, 
+        {
+            "pregunta" : "¿A quién debo acudir si requiero servicios de arboricultura?",
+            "respuesta" : [
+            "Consulta a un profesional de la arboricultura para una evaluación profesional. Contacta a la Secretaría del Medio Ambiente de laCiudad de México o a tu alcaldia para conocer los permisos necesarios para realizar cualquier trabajo relacionado con el arbolado.",
+            "Puedes contactar a la Asociación Mexicana de Arboricultura para conocer a los profesionales que realizan este tipo de servicios en tu localidad.",
+            "Indaga si las personas que prestan los servicios están acreditadas por las autoridades ambientales o cuentan con certificaciones adecuadas para los trabajos de arboricultura."
+            ]
+        }, 
+        {
+            "pregunta" : "¿Qué árbol plantar?",
+            "respuesta" : ""
+        }
+    ]
+}

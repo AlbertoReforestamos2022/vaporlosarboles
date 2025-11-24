@@ -1,0 +1,36 @@
+/* 
+ * Colores Reforestamos  
+ */
+
+// Colores proyecto tequios
+$verde: rgba(33, 137, 30, 1);
+$cafe: rgba(96, 72, 43, 1);
+$verdeSuccess: rgba(128,255,0, 1);
+
+
+// Colores Redes Sociales
+$facebook: #3b5998;
+$linkedin: #007bb5;
+$instagram: #D43089;
+$twiter: #55acee;
+$youtube: #bb0000;
+$tiktok: #212121;
+
+/*
+ * Temas (Colores)
+*/
+
+$primary:       $verde;
+$secondary:     $cafe;
+$light:         $verdeSuccess;
+
+/*
+ * estilos botones
+ */
+
+.btn-outline-info {
+  --bs-btn-hover-color: #fff; // Cambia solo el hover color del texto
+}
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

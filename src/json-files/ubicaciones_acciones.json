@@ -1,0 +1,32 @@
+{
+    "ubicaciones": [
+        {
+            "coordenadas": "19.378575849400416, -99.17216491806478", 
+            "direccion": "Tlacoquemecatl del Valle, Benito Juárez, 03200 Ciudad de México, CDMX", 
+            "foto_antes": "", 
+            "foto_despues": "", 
+            "historia": "Historia"  
+        },
+        {
+            "coordenadas": "19.35680958450389, -99.14891870457204", 
+            "direccion": "Prol. Xicoténcatl 35-49, San Diego Churubusco, Coyoacán, 04120 Ciudad de México, CDMX", 
+            "foto_antes": "", 
+            "foto_despues": "", 
+            "historia": "Historia" 
+        },
+        {
+            "coordenadas": "19.390258937675235, -99.13517224662577", 
+            "direccion": "Javier Sorondo 241, Iztaccihuatl, Benito Juárez, 03520 Ciudad de México, CDMX", 
+            "foto_antes": "", 
+            "foto_despues": "", 
+            "historia": "Historia" 
+        },
+        {
+            "coordenadas": "19.414504289046175, -99.11947566224195", 
+            "direccion": "El Parque, Venustiano Carranza, 15960 Venustiano Carranza, CDMX", 
+            "foto_antes": "", 
+            "foto_despues": "", 
+            "historia": "Historia" 
+        }                
+    ]
+}

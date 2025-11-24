@@ -1,0 +1,56 @@
+<?php
+// Register Custom Post Type
+function evpla_post_type() {
+    $labels = array(
+        'name'                  => _x( 'Especialistas', 'Post Type General Name', 'especialistas_domain' ),
+        'singular_name'         => _x( 'Especialista', 'Post Type Singular Name', 'especialistas_domain' ),
+        'menu_name'             => __( 'Especialistas', 'especialistas_domain' ),
+        'name_admin_bar'        => __( 'Especialistas', 'especialistas_domain' ),
+        'archives'              => __( 'Archivo especialista', 'especialistas_domain' ),
+        'attributes'            => __( 'Atributos especialista', 'especialistas_domain' ),
+        'parent_item_colon'     => __( 'Especialista padre:', 'especialistas_domain' ),
+        'all_items'             => __( 'Todos', 'especialistas_domain' ),
+        'add_new_item'          => __( 'Agregar nuevo', 'especialistas_domain' ),
+        'add_new'               => __( 'Agregar', 'especialistas_domain' ),
+        'new_item'              => __( 'Nuevo', 'especialistas_domain' ),
+        'edit_item'             => __( 'Editar', 'especialistas_domain' ),
+        'update_item'           => __( 'Actualizar', 'especialistas_domain' ),
+        'view_item'             => __( 'Ver especialista', 'especialistas_domain' ),
+        'view_items'            => __( 'Ver especialistas', 'especialistas_domain' ),
+        'search_items'          => __( 'Buscar especialista', 'especialistas_domain' ),
+        'not_found'             => __( 'No encontrado', 'especialistas_domain' ),
+        'not_found_in_trash'    => __( 'No encontrado en la papelera', 'especialistas_domain' ),
+        'featured_image'        => __( 'Imagen destacada', 'especialistas_domain' ),
+        'set_featured_image'    => __( 'Asignar imagen destacada', 'especialistas_domain' ),
+        'remove_featured_image' => __( 'Remover imagen', 'especialistas_domain' ),
+        'use_featured_image'    => __( 'Usar como imagen destacada', 'especialistas_domain' ),
+        'insert_into_item'      => __( 'Insertar en especialista', 'especialistas_domain' ),
+        'uploaded_to_this_item' => __( 'Subir a especialista', 'especialistas_domain' ),
+        'items_list'            => __( 'Lista especialistas', 'especialistas_domain' ),
+        'items_list_navigation' => __( 'Navegación especialistas', 'especialistas_domain' ),
+        'filter_items_list'     => __( 'Filtro especialistas', 'especialistas_domain' ),
+    );
+    $args = array(
+        'label'                 => __( 'Especialista', 'especialistas_domain' ),
+        'description'           => __( 'Contenido del especialista', 'especialistas_domain' ),
+        'labels'                => $labels,
+        'supports'              => array( 'title', 'editor', 'thumbnail' ),
+        'taxonomies'            => array(),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_icon'             => 'dashicons-businessman',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => false,
+        'can_export'            => true,
+        'has_archive'           => true,
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'page',
+        'show_in_rest'          => true,
+        'map_meta_cap'          => true,
+    );
+    register_post_type( 'evpla_especialista', $args );
+}
+add_action( 'init', 'evpla_post_type', 0 );

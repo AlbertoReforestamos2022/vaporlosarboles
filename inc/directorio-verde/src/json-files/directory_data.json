@@ -1,0 +1,45 @@
+{
+    "states" : [
+        { "properties": { "CVE_ENT": "01", "NOM_ENT": "Aguascalientes" } },
+        { "properties": { "CVE_ENT": "02", "NOM_ENT": "Baja California" } },
+        { "properties": { "CVE_ENT": "03", "NOM_ENT": "Baja California Sur" } },
+        { "properties": { "CVE_ENT": "04", "NOM_ENT": "Campeche" } },
+        { "properties": { "CVE_ENT": "05", "NOM_ENT": "Coahuila de Zaragoza" } },
+        { "properties": { "CVE_ENT": "06", "NOM_ENT": "Colima" } },
+        { "properties": { "CVE_ENT": "07", "NOM_ENT": "Chiapas" } },
+        { "properties": { "CVE_ENT": "08", "NOM_ENT": "Chihuahua" } },
+        { "properties": { "CVE_ENT": "09", "NOM_ENT": "Ciudad de México" } },
+        { "properties": { "CVE_ENT": "10", "NOM_ENT": "Durango" } },
+        { "properties": { "CVE_ENT": "11", "NOM_ENT": "Guanajuato" } },
+        { "properties": { "CVE_ENT": "12", "NOM_ENT": "Guerrero" } },
+        { "properties": { "CVE_ENT": "13", "NOM_ENT": "Hidalgo" } },
+        { "properties": { "CVE_ENT": "14", "NOM_ENT": "Jalisco" } },
+        { "properties": { "CVE_ENT": "15", "NOM_ENT": "Estado de México" } },
+        { "properties": { "CVE_ENT": "16", "NOM_ENT": "Michoacán de Ocampo" } },
+        { "properties": { "CVE_ENT": "17", "NOM_ENT": "Morelos" } },
+        { "properties": { "CVE_ENT": "18", "NOM_ENT": "Nayarit" } },
+        { "properties": { "CVE_ENT": "20", "NOM_ENT": "Oaxaca" } },
+        { "properties": { "CVE_ENT": "19", "NOM_ENT": "Nuevo León" } },
+        { "properties": { "CVE_ENT": "21", "NOM_ENT": "Puebla" } },
+        { "properties": { "CVE_ENT": "22", "NOM_ENT": "Querétaro" } },
+        { "properties": { "CVE_ENT": "23", "NOM_ENT": "Quintana Roo" } },
+        { "properties": { "CVE_ENT": "24", "NOM_ENT": "San Luis Potosí" } },
+        { "properties": { "CVE_ENT": "25", "NOM_ENT": "Sinaloa" } },
+        { "properties": { "CVE_ENT": "26", "NOM_ENT": "Sonora" } },
+        { "properties": { "CVE_ENT": "27", "NOM_ENT": "Tabasco" } },
+        { "properties": { "CVE_ENT": "28", "NOM_ENT": "Tamaulipas" } },
+        { "properties": { "CVE_ENT": "29", "NOM_ENT": "Tlaxcala" } },
+        { "properties": { "CVE_ENT": "30", "NOM_ENT": "Veracruz" } },
+        { "properties": { "CVE_ENT": "31", "NOM_ENT": "Yucatán" } },
+        { "properties": { "CVE_ENT": "32", "NOM_ENT": "Zacatecas" } }       
+    ],
+    "categories" : [
+        {"properties": { "CVE_CAT" : "01", "NOM_CAT" : "Arboristas"}},
+        {"properties": { "CVE_CAT" : "02", "NOM_CAT" : "Asesores Ambientales"}},
+        {"properties": { "CVE_CAT" : "03", "NOM_CAT" : "Colectivos Jóvenes"}},
+        {"properties": { "CVE_CAT" : "04", "NOM_CAT" : "Organizaciones"}},
+        {"properties": { "CVE_CAT" : "05", "NOM_CAT" : "Paisajistas"}},
+        {"properties": { "CVE_CAT" : "06", "NOM_CAT" : "Viveristas"}}
+    ]     
+
+}

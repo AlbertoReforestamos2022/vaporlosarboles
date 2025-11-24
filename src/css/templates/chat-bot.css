@@ -1,0 +1,161 @@
+/* Botón flotante */
+#chatbot-toggle {
+  position: fixed;
+  bottom: 140px;
+  right: 20px;
+  z-index: 9999;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor del chatbot */
+#chatbot {
+  /* display: none; */
+  position: fixed;
+  bottom: 140px;
+  right: 20px;
+  width: 360px;
+  max-height: 500px;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 9998;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+
+
+  /* animación */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, visibility 0.5s ease-out;
+
+}
+
+
+#chatbot.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* title chat  */
+#title-chat {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+}
+
+/* Título */
+#title-chat h5 {
+  position: relative;
+  /* top: 0;
+  right: 0; */
+  margin: 0;
+  padding: 20px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Contenedor de botones de preguntas */
+#chat-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 15px;
+}
+
+/* Ancho de la barra */
+#chat-body *::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Color del fondo de la barra */
+#chat-body *::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Color del "thumb" (la parte que se mueve) */
+#chat-body *::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+/* Color cuando el thumb está en hover */
+#chat-body *::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+/* Contenedor de respuesta */
+#chat-respuesta {
+  position: absolute;
+  top: 0;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 15px;
+  background-color: #fff;
+
+  /* Animación  */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(30px);
+  pointer-events: none;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+/* Ancho de la barra */
+#chat-respuesta *::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Color del fondo de la barra */
+#chat-respuesta *::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Color del "thumb" (la parte que se mueve) */
+#chat-respuesta *::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+/* Color cuando el thumb está en hover */
+#chat-respuesta *::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+#chat-respuesta.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  pointer-events: auto;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Contenido de la respuesta */
+#respuesta-contenido .pregunta-titulo {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #28a745;
+}
