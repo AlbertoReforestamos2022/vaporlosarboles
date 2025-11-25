@@ -15,6 +15,10 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
     // función agregar spinner cargando
     function spinnerCargando() {
+        // quitar formulario de suscripción
+        const formulario = document.querySelector('.content-formulario'); 
+        formulario.style.opacity = 0; 
+
         let contenedorDots = document.querySelector('.loading-content'); 
         // quitamos el opacity para que se vean los dots de cargando
         contenedorDots.style.opacity = 1; 
@@ -31,16 +35,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
         // Quitar los dots con opacity = 1  
         setTimeout(()=> {
             contenedorDots.style.opacity = 0; 
-        }, 5000); 
+        }, 8000); 
 
     }
 
     // Función quitar formulario
     function quitarFormulario(mensajeStatus) {
-        // quitar formulario de suscripción
-        const formulario = document.querySelector('.content-formulario'); 
-        formulario.style.opacity = 0; 
-
         // Agregar mensaje de agradecimiento
         const mensaje = document.querySelector('#mensaje-directorio-verde'); 
         mensaje.innerHTML = `<h5 class="text-center text-primary my-3">${mensajeStatus}</h5>`
@@ -71,6 +71,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
     document.querySelector('#content-formulario').addEventListener("submit", async function(e) {
         e.preventDefault();
 
+        // Agregar la función de cargando antes de hacer la petición
+        spinnerCargando();
+
         const formData = new FormData(this);
         formData.append("action", "formulario_directorio_verde");
 
@@ -79,18 +82,15 @@ document.addEventListener('DOMContentLoaded', ()=> {
             const data = await response.json();
 
             if (data.success) {
-                spinnerCargando() 
                 quitarFormulario(data.data.message);
 
             } else {
                 const msgError = data.data?.message || 'Hubo un error al enviar el formulario.';
-                spinnerCargando() 
                 quitarFormulario(data.data.message);
                 console.error('Error real de PHP/PHPMailer:', msgError);
             }
         } catch (error) {
             console.error('Error en el envío del formulario:', error);
-            spinnerCargando() 
             quitarFormulario('Hubo un error al enviar el formulario. Revisa la consola.');
         }
     });

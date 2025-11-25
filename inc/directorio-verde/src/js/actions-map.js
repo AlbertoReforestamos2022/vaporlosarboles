@@ -1,10 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Agregar tamaño del contenenor (mapa - cards de busqueda)
+    // #directorio_content
+    const observer = new ResizeObserver(entries => {
+        for (let entry of entries ) {
+            const { height } = entry.contentRect;
+            console.log(`Elemento ${height}`); 
+        }
+    })
+
+    observer.observe(document.querySelector('body')); 
     
     // ========== VARIABLES GLOBALES ==========
     let todosLosEspecialistas = [];
     let estadosGeoJSON = null;
     let currentStateLayer = null;
     let estadosConEspecialistas = new Set();
+    
+    // Objeto para rastrear filtros activos
+    let filtroActivo = {
+        estado: '',
+        especialidad: ''
+    };
 
     // ========== INICIALIZAR MAPA ==========
     let map = L.map('map').setView([23.6345, -102.5528], 5);
@@ -37,8 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 const defaultZoom = 5;
                 map.setView(defaultCoords, defaultZoom);
                 
-                // Resetear select
+                // Resetear filtros
+                filtroActivo.estado = '';
+                filtroActivo.especialidad = '';
+                
+                // Resetear selects
                 document.querySelector('#states-option').value = "";
+                document.querySelector('#speciality-option').value = "";
                 
                 // Limpiar cards y mostrar mensaje inicial
                 mostrarMensajeInicial();
@@ -107,11 +128,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========== LLENAR SELECT DE ESTADOS ==========
     function llenarSelectEstados(geoData) {
         const select = document.querySelector('#states-option');
+        
+        if (!select) {
+            console.error('❌ No se encontró el select #states-option');
+            return;
+        }
+        
         select.innerHTML = '';
         
         const defaultOption = document.createElement("option");
         defaultOption.value = "";
-        defaultOption.textContent = "Selecciona un estado";
+        defaultOption.textContent = "Estado";
         select.appendChild(defaultOption);
 
         const estadosOrdenados = geoData.features
@@ -127,21 +154,59 @@ document.addEventListener('DOMContentLoaded', function() {
             option.textContent = estado.nombre;
             select.appendChild(option);
         });
+        
+        console.log('✅ Select de estados llenado con', estadosOrdenados.length, 'opciones');
+    }
+
+    // ========== LLENAR SELECT DE ESPECIALIDAD ============ 
+    function llenarSelectEspecialidad() {
+        const select = document.querySelector('#speciality-option'); 
+        
+        if (!select) {
+            console.error('No se encontró el select #speciality-option');
+            return;
+        }
+        
+        select.innerHTML = ''; 
+
+        // Opción por defecto
+        const defaultOption = document.createElement("option"); 
+        defaultOption.value = ""; 
+        defaultOption.textContent = "Especialidad"; 
+        select.appendChild(defaultOption); 
+
+        // Extraer especialidades únicas del array de especialistas
+        const especialidadesMap = new Map();
+        
+        todosLosEspecialistas.forEach(esp => {
+            // Solo agregar si tiene especialidad
+            if (esp.especialidad_clave && esp.especialidad) {
+                // Usar Map para evitar duplicados
+                especialidadesMap.set(esp.especialidad_clave, esp.especialidad);
+            }
+        });
+
+        // Convertir Map a array y ordenar alfabéticamente por nombre
+        const especialidadesOrdenadas = Array.from(especialidadesMap.entries())
+            .sort((a, b) => a[1].localeCompare(b[1])); // Ordenar por nombre [1]
+
+        console.log('✅ Especialidades encontradas:', especialidadesOrdenadas);
+
+        // Crear opciones
+        especialidadesOrdenadas.forEach(([clave, nombre]) => {
+            const option = document.createElement("option"); 
+            option.value = clave;
+            option.textContent = nombre;
+            select.appendChild(option);
+        });
+        
+        console.log(`Select de especialidades llenado con ${especialidadesOrdenadas.length} opciones`);
     }
 
     // ========== MOSTRAR MENSAJE INICIAL ==========
     function mostrarMensajeInicial() {
-        const contenedor = document.getElementById("directorio_cards");
-        contenedor.innerHTML = `
-            <div class="mensaje-inicial text-center p-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-geo-alt mb-3 text-success" viewBox="0 0 16 16">
-                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                </svg>
-                <h5 class="mb-3">Directorio de Especialistas</h5>
-                <p class="text-muted">Selecciona un estado del menú desplegable para ver los especialistas disponibles en esa región.</p>
-            </div>
-        `;
+        const contenedor = document.getElementById("instrucciones");
+
     }
 
     // ========== CARGAR ESPECIALISTAS DESDE WORDPRESS ==========
@@ -160,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (response.success) {
                     todosLosEspecialistas = response.data;
-                    console.log('✅ Especialistas cargados:', todosLosEspecialistas);
+                    console.log('Especialistas cargados:', todosLosEspecialistas);
                     
                     // Crear set de estados con especialistas
                     todosLosEspecialistas.forEach(esp => {
@@ -173,6 +238,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // NO mostrar cards al inicio, solo mensaje
                     mostrarMensajeInicial();
+
+                    // Llenar select de especialidades
+                    llenarSelectEspecialidad();
                     
                 } else {
                     console.error('Error en la respuesta:', response);
@@ -200,39 +268,72 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    // ========== CREAR CARDS FILTRADOS POR ESTADO ==========
-    function crearCardsPorEstado(claveEstado) {
-        const contenedor = document.getElementById("directorio_cards");
+    // ========== APLICAR FILTROS COMBINADOS ==========
+    function aplicarFiltros() {
+        const contenedor = document.getElementById("results-specialists");
         contenedor.innerHTML = '';
 
-        // Filtrar especialistas por estado
-        const especialistasFiltrados = todosLosEspecialistas.filter(
-            esp => esp.lugar_clave === claveEstado
-        );
+        // Resultados encontrados
+        let resultadosEncontrados = document.getElementById("resultados_encontrados"); 
+        // console.log(resultadosEncontrados); 
+        resultadosEncontrados.innerHTML = ''; 
 
-        console.log(`Especialistas en estado ${claveEstado}:`, especialistasFiltrados.length);
+        let especialistasFiltrados = todosLosEspecialistas;
 
+        // Filtrar por estado si está seleccionado
+        if (filtroActivo.estado) {
+            especialistasFiltrados = especialistasFiltrados.filter(
+                esp => esp.lugar_clave === filtroActivo.estado
+            );
+        }
+
+        // Filtrar por especialidad si está seleccionada
+        if (filtroActivo.especialidad) {
+            especialistasFiltrados = especialistasFiltrados.filter(
+                esp => esp.especialidad_clave === filtroActivo.especialidad
+            );
+        }
+
+        // Si no hay filtros activos, mostrar mensaje inicial
+        if (!filtroActivo.estado && !filtroActivo.especialidad) {
+            mostrarMensajeInicial();
+            return;
+        }
+
+        console.log('Filtros aplicados:', filtroActivo);
+        console.log('Resultados:', especialistasFiltrados.length);
+
+        // Mostrar resultados o mensaje de "sin resultados"
         if (especialistasFiltrados.length === 0) {
-            contenedor.innerHTML = `
+            resultadosEncontrados.innerHTML = `
                 <div class="alert alert-warning m-3" role="alert">
                     <strong>Sin resultados</strong><br>
-                    No hay especialistas registrados en este estado.
+                    No hay especialistas que coincidan con los filtros seleccionados.
                 </div>
             `;
             return;
         }
 
         // Crear cards
+        const containerResults = document.createElement('div');
+        containerResults.classList.add('row', 'justify-content-center', 'bg-white', 'actions-content-map');
+        containerResults.setAttribute('id', 'directorio_cards'); 
+
         especialistasFiltrados.forEach((especialista) => {
             const div = document.createElement("div");
             div.className = "especialista-card-wrapper";
             div.innerHTML = `
                 <div class="col-12 d-grid align-items-center">
-                    <div class="card border-0 my-3 rounded shadow">
+                    <div class="card border-0 mb-3 rounded shadow">
                         <div class="card-body p-3">
                             <h5 class="fw-semibold mb-2" style="font-size: 18px!important; color: #198754;">
                                 ${especialista.nombre}
                             </h5>
+                            ${especialista.especialidad ? `
+                                <p class="mb-2">
+                                    <span class="badge bg-success">${especialista.especialidad}</span>
+                                </p>
+                            ` : ''}
                             ${especialista.empresa ? `
                                 <p class="mb-1 text-secondary">
                                     <strong>Empresa:</strong> ${especialista.empresa}
@@ -243,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
                                     </svg>
-                                    <strong>Teléfono:</strong> ${especialista.telefono}
+                                    <strong>Teléfono:</strong> <a href="tel:${especialista.telefono}"> ${especialista.telefono} </a>  
                                 </p>
                             ` : ''}
                             ${especialista.correo ? `
@@ -272,16 +373,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             `;
-            contenedor.appendChild(div);
+            containerResults.appendChild(div);
         });
 
-        // Mostrar contador
+        contenedor.appendChild(containerResults); 
+
+        // Mostrar contador - resultados 
         const contador = document.createElement("div");
         contador.className = "alert alert-success m-3";
         contador.innerHTML = `
             <strong>${especialistasFiltrados.length}</strong> especialista${especialistasFiltrados.length !== 1 ? 's' : ''} encontrado${especialistasFiltrados.length !== 1 ? 's' : ''}.
         `;
-        contenedor.insertBefore(contador, contenedor.firstChild);
+
+        resultadosEncontrados.appendChild(contador); 
     }
 
     // ========== RESALTAR ESTADO EN EL MAPA ==========
@@ -322,15 +426,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ========== EVENT LISTENER PARA SELECT ==========
+    // ========== EVENT LISTENER PARA SELECT DE ESTADOS ==========
     document.querySelector('#states-option').addEventListener('change', function(e) {
         const claveEstado = e.target.value;
         console.log('Estado seleccionado:', claveEstado);
         
-        if (!claveEstado) {
-            // Si no hay estado seleccionado, mostrar mensaje inicial
-            mostrarMensajeInicial();
-            
+        filtroActivo.estado = claveEstado;
+        
+        if (claveEstado) {
+            // Resaltar estado en el mapa
+            resaltarEstado(claveEstado);
+        } else {
             // Quitar resaltado
             if (currentStateLayer) {
                 map.removeLayer(currentStateLayer);
@@ -339,14 +445,21 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Volver a la vista general
             map.setView([23.6345, -102.5528], 5);
-            
-        } else {
-            // Mostrar especialistas del estado seleccionado
-            crearCardsPorEstado(claveEstado);
-            
-            // Resaltar estado en el mapa
-            resaltarEstado(claveEstado);
         }
+        
+        // Aplicar filtros
+        aplicarFiltros();
+    });
+
+    // ========== EVENT LISTENER PARA SELECT DE ESPECIALIDAD ==========
+    document.querySelector('#speciality-option').addEventListener('change', function(e) {
+        const claveEspecialidad = e.target.value;
+        console.log('Especialidad seleccionada:', claveEspecialidad);
+        
+        filtroActivo.especialidad = claveEspecialidad;
+        
+        // Aplicar filtros
+        aplicarFiltros();
     });
 
     // ========== INICIALIZAR ==========

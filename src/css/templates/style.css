@@ -235,27 +235,12 @@ body {
     }
 }
 
-
 /* Actions Section (Videos) */
 .hero-actions {
     margin-top: 100px;
 }
 
-/* actions map */
-
-
 /* Media queries */
-.actions-content-map {
-    max-height: 450px; /* Ajusta la altura máxima */
-    overflow-y: auto; /* Actica el scroll vertical cuando sea necesario  */
-    padding: 10px;
-}
-
-.select-option {
-    position: relative;
-
-}
-
 #states-option option {
     position: absolute;
     top: 0;

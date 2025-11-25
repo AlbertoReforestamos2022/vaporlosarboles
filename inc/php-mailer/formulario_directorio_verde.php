@@ -18,7 +18,7 @@ function formulario_directorio_verde() {
     
     // Preparar correo principal
     $to = ['albertocortes@reforestamos.org', 'alberto3000cortes0003@gmail.com'];
-    $subject = "Formulario Reconoce Va Por Los Árboles";
+    $subject = "Formulario registro directorio verde";
     $headers = [
         "Content-Type: text/html; charset=UTF-8",
         "From: $email",

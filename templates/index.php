@@ -211,15 +211,22 @@
 
 
 <?php # Directorio Verde ?>
-<div class="container" style="margin-top: 40px;" >
-    <p class="text-start h2" style="color: #2C8E2A!important;" >Conoce nuestro </br> Directorio Verde </p>
+<div class="container directorio-container" style="margin-top: 40px;" >
+    <p class="text-start h2" style="color: #2C8E2A!important;" >Conoce nuestro </br> directorio verde </p>
 
     <div class="row row-cols-1 row-cols-lg-2 flex-row-reverse justify-content-center align-items-center "  id="directorio_content"> 
         <?php # Cards especialistas content?>
         <div class="col col-lg-4">
-            <div class="row row-cols-1">
+            <div class="row row-cols-1 align-items-center">
                 <?php ## Filtros de busqueda ?>
                 <div class="col">
+                    <div class="row">
+                        <div class="instrucciones" id="instrucciones">
+                            <div class="mensaje-inicial p-2">
+                                <p class="text-muted">Selecciona un estado o especialidad del menú desplegable para ver los especialistas disponibles.</p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <?php ## Seleccionar por estado ?>
                         <div class="col-6 select-option" stye="margin-top: 5px; margin-bottom: 5px;">
@@ -239,35 +246,32 @@
                 </div> 
                 
                 <?php # Resultados ?>
-                <div class="col-12">
+                <div class="col-12 my-4">
                     <div class="resultados" id="resultados_encontrados">
                     </div>
                 </div>
 
-                <!-- cards acciones -->
+                <?php # cards acciones?>          
                 <div class="col d-flex justify-content-center">
-                    <div class="card border-0 bg-transparent">
-                        <div class="row justify-content-center bg-white actions-content-map" id="directorio_cards">
-                            <?php ## Llenado de cards con la especialidad ?>
+                    <div class="card border-0 bg-transparent" id="results-specialists">
 
-                        </div> 
                     </div>               
-                </div>            
+                </div>  
             </div>
         </div>
 
         <?php # Mapa acciones ?>
         <div class="col col-lg-8 py-3">
             <div class="card d-flex justify-content-center border-0">
-                <div class="shadow" id="map" style="height: 600px; max-width:800px; border-radius: 20px;">
+                <div class="shadow" id="map" style="height: 500px; max-width:800px; border-radius: 20px;">
 
                 </div>
             </div>
         </div>
 
-        <?php # Contenido formulario ?>
+        <?php # Formulario registro ?>
         <div class="formulario_content" id="formulario_content">
-            <h2 class="text-center text-primary">Conoce nuestro Directorio verde </h2>
+            <h2 class="text-center text-primary">Regístrate y consúltalo </h2>
             <div id="formulario-directorio" class="formulario-directorio">
                 <?php # Agregar formaulario?>
                 <form id="content-formulario" class="content-formulario" method="post" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>">
@@ -275,7 +279,8 @@
 
                     <input class="form-label" type="text" name="nombre" placeholder="Nombre completo" require>
                     <input class="form-label" type="email" name="correo" placeholder="Correo electrónico" required>
-                    <button class="btn btn-primary btn-formulario-directorio-verde" type="submit">Ver especialistas</button>
+
+                    <button class="btn btn-primary btn-formulario-directorio-verde" type="submit">Enviar y consultar</button>
                 </form>
 
                 <div id="mensaje-directorio-verde">

@@ -1,4 +1,15 @@
 /* Estilos generales*/ 
+.actions-content-map {
+    max-height: 250px; /* Ajusta la altura máxima */
+    overflow-y: auto; /* Actica el scroll vertical cuando sea necesario  */
+    padding: 10px;
+}
+
+.select-option {
+    position: relative;
+
+}
+
 select {
     width: 100%;
 }

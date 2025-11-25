@@ -21,7 +21,7 @@ function cargar_scripts_especialistas() {
     # Encolar el escript del mapa iteractivo
     wp_enqueue_script(
         'mapa_directorio_verde',
-        get_template_directory_uri() . '/src/js/actions-map.js',
+        get_template_directory_uri() . '/inc/directorio-verde/src/js/actions-map.js',
         array('jquery'),
         '1.0.0',
         true
