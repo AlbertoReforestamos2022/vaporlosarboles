@@ -271,16 +271,10 @@ body {
 
 
 
-
-
-
-
-
 /* 
  *  Section Tools - Herramientas  
 */
 
-/* Agregar media queries para pantallas más pequeñas y dispositivos móviles */
 .container-transition-right {
     opacity: 0;
     transform: translateX(200px);
@@ -288,7 +282,6 @@ body {
     will-change: opacity, transform;
 }
 
-/* Agregar media queries para pantallas más pequeñas y dispositivos móviles */
 .container-transition-left {
     opacity: 0;
     transform: translateX(-200px);
@@ -299,36 +292,32 @@ body {
 /* Sección celular  */
 .subhero-tools {
     padding: 60px 40px;
-    height: 480px ;
+    height: 480px;
     border-radius: 95px;
     display: flex;
     justify-content: center;
+    align-items: center;
     position: relative;
     z-index: 1;
 }
 
-/* .container-tools  */
-
+/* CAMBIO: Usa flexbox en lugar de absolute positioning */
 .sections-tools {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .container-movil-tool {
     position: relative;
-    top: 50%;
-    /* Valor mínimo, valor preferido, valor máximo */
-    left: clamp(15%, calc(20% + (25% - 15%) * (768px - 100vw) / (768px - 320px)), 28%);
-    transform: translate(-50%, -50%);
-
-     transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* Evita que se comprima */
 }
 
 .info-section {
-    position: relative;
-    left: 0;
-    transition: trasform 0.3s ease;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 .img-content-tool {
@@ -345,32 +334,29 @@ body {
     width: 80%;
     transform: translate(-50%, -50%);
     max-height: 350px;
-    
-
     transition: color 0.3s ease-in-out;
 }
 
 .letter-content-tool .list-group .list-group-item button:hover>p {
-    color:  white!important;
+    color: white!important;
 }
 
 /* custom modal tools */
 .custom-backdrop {
     position: absolute;
-    left: -14px;
-    width: 310px;
-    height: 661px;
-    background-color: rgba(255,255,0255, 1);
+    top: -279px!important;
+    left: -13px;
+    width: 268px;
+    height: 559px;
+    background-color: rgba(255, 255, 255, 1);
     z-index: 1040;
     border-radius: 45px;
-
 }
 
 .custom-modal {
     position: absolute;
     top: 52%;
     left: 50%;
-    /* height: 600px; */
     width: 100%;
     max-width: 300px;
     transform: translate(-50%, -50%);
@@ -384,44 +370,48 @@ body {
 .custom-modal-content {
     max-height: 500px;
     overflow-y: auto;
-    
     scrollbar-width: none!important;
 }
 
 .custom-modal-content > p {
     text-align: justify;
-} 
+}
 
 .custom-modal-content *::-webkit-scrollbar {
     scrollbar-width: none!important;
 }
 
-
 /* Responsive */
 /* Para dispositivos móviles */
-@media (max-width:  576px) {
+@media (max-width: 576px) {
     .hero-tools {
         min-height: 1200px;
     }
 
     .subhero-tools {
-        height: 800px ;
+        height: 800px;
         border-radius: 0px;
+        flex-direction: column;
     }
 
+    .sections-tools {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 
-@media (min-width: 576px) and  (max-width: 768px) {
-    .container-movil-tool {
-        left: 15%;
-    }
-
+@media (min-width: 576px) and (max-width: 768px) {
     .subhero-tools {
-        height: 800px ;
+        height: 800px;
         border-radius: 0px;
-    }    
-}
+        flex-direction: column;
+    }
 
+    .sections-tools {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
 
 /* Para tablets ≥768px */
 @media (min-width: 768px) {
@@ -430,21 +420,20 @@ body {
     }
 
     .subhero-tools {
-        height: 600px ;
+        height: 600px;
     }
 
     .container-tools {
-        top: -50px;
+        /* Aquí solo ajusta si necesitas */
     }
 
     .img-content-tool {
         max-width: 350px;
-    }  
-    
-    .info-section {
-        margin-top: 50px!important;
     }
 
+    .info-section {
+        margin-top: 0!important; /* Flexbox lo centra */
+    }
 }
 
 /* Para laptops ≥992px */
@@ -453,17 +442,12 @@ body {
         min-height: 930px;
     }
 
-    .container-movil-tool {
-        left: 25%;
-    }  
+    .subhero-tools {
+        flex-direction: row;
+    }
 
     .sections-tools {
-        top: 0;
-        left: 0;
-    }
-    
-    .info-section {
-        left: 10%;
+        flex-direction: row;
     }
 }
 

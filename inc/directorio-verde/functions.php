@@ -34,7 +34,7 @@ function cargar_scripts_especialistas() {
         array(
             'ajaxUrl'        => admin_url('admin-ajax.php'),
             'nonce'          => wp_create_nonce('especialistas_nonce'),
-            'estadosJsonUrl' => get_template_directory_uri() . '/src/json-files/division_politica_estados.geojson'
+            'estadosJsonUrl' => get_template_directory_uri() . '/inc/directorio-verde/src/json-files/division_politica_estados.geojson'
         )
     ); 
 }

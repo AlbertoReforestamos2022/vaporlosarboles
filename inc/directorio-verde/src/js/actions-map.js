@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             ` : ''}
                             ${especialista.empresa ? `
                                 <p class="mb-1 text-secondary">
-                                    <strong>Empresa:</strong> ${especialista.empresa}
+                                    <strong>Empresa, Organización, etc... :</strong> ${especialista.empresa}
                                 </p>
                             ` : ''}
                             ${especialista.telefono ? `
@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </p>
                             ` : ''}
                             ${especialista.actividades ? `
-                                <p class="mb-0 mt-2">
+                                <p class="mb-1 text-secondary">
                                     <strong>Actividades:</strong><br>
                                     <small class="text-muted">${especialista.actividades}</small>
                                 </p>

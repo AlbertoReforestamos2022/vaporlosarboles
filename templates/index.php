@@ -7,9 +7,6 @@
     .item-carrusel i {
         font-size: 2rem;
     }
-
-
-
 </style>
 
 <?php
@@ -109,7 +106,7 @@
 </div>
 
 
-<!-- Action sections (Videos YT - Tik-Tok (Videos) - btn twitter(X)) -->
+<?php # Action sections (Videos YT - Tik-Tok (Videos) - btn twitter(X)) ?>
 <div class="hero-actions" id="actions-section">
     <div class="text-acciones" style="margin-top: 50px; margin-bottom: 50px;">
         <h2 class="text-center verde-primary display-4 fw-bold"> 
@@ -117,13 +114,14 @@
         </h2>
     </div>
 
+    <?php ## Videos Youtube ?>
     <div class="container">
         <?php $videos_acciones_yt = get_post_meta( get_the_ID(), 'seccion_plugin_yt', true); ?>
-
         <?php echo do_shortcode($videos_acciones_yt);  ?>
 
     </div>
 
+    <?php # Videos feed TikTok ?>
     <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
         <?php $video_mas_reciente = get_post_meta( get_the_ID(), 'video_reciente', true); ?>
         <?php $videos_tik_tok = get_post_meta( get_the_ID(), 'vpla_group_videos_feed_tik_tok', true)?>
@@ -174,40 +172,7 @@
                
         </div> 
     </div>
-
-    <!-- Incorporar mapa de acciones -->
-    <!-- Mapa de resultados 2da etapa (trabajarlo) -->
-    <div class="container d-none" style="margin-top: 40px;">
-        <p class="text-start h2" style="color: #2C8E2A!important;" >Conoce los lugares </br> donde se está tomando acción </p>
-
-        <div class="row row-cols-1 row-cols-lg-2 flex-row-reverse justify-content-center align-items-center">
-            <!-- cards acciones -->
-            <div class="col-12 col-lg-4 d-flex justify-content-center">
-                <div class="card border-0 bg-transparent">
-                    <p class="text-center h3 text-secondary">Mapa de acciones </p>
-                    <div class="row row-cols-1 gap-3 bg-white actions-content-map" id="acciones_map">
-   
-
-                    </div> 
-                </div>               
-            </div>
-
-            <!-- Mapa acciones-->
-            <div class="col-12 col-lg-8 py-3">
-                <div class="card d-flex justify-content-center border-0">
-                    <div class="shadow" id="actionsMap" style="height: 600px; max-width:800px; border-radius: 20px;">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
-
-
-<!-- Video Próximante  -->
-
 
 
 <?php # Directorio Verde ?>
@@ -315,7 +280,7 @@
         
 </div>
 
-<!-- Guides tools  --> 
+<?php # Herramientas ?>
 <?php
     #sección Naturalista
     # Array sección naturalist
@@ -364,8 +329,6 @@
         'descripcion' => get_post_meta(get_the_ID(), 'descripcion_directorio_verde', true),
         'link' => get_post_meta(get_the_ID(), 'link_directorio_verde', true),
     ]; 
-
-    ## Meter los valores en un array 
 
     ## funcion para la lista de los arrays
     function lista_herramientas($lista_arrays) { ?>
@@ -471,7 +434,7 @@
         }         
     }
 
-    function contenido_herramientsa($array_Naturalist, $array_IDArbol, $array_MiPolicia_App, $array_guia_arbolado, $array_capacitacion_arbolado_urbano, $array_directorio_verde) {
+    function contenido_herramientsa($array_Naturalist, $array_IDArbol, $array_MiPolicia_App, $array_guia_arbolado, $array_capacitacion_arbolado_urbano) {
         ## Lista de opciones
         ?>
         <?php 
@@ -479,7 +442,7 @@
             pop_up_herramientas($array_IDArbol); 
             pop_up_herramientas($array_MiPolicia_App); 
             # pop_up_herramientas($array_guia_arbolado); 
-            pop_up_herramientas($array_directorio_verde); 
+            #pop_up_herramientas($array_directorio_verde); 
         ?>
 
         <ul class="list-group border-0" style="position: absolute; bottom: -260px; ">
@@ -488,273 +451,260 @@
             <?php lista_herramientas($array_MiPolicia_App);  ?>
             <?php lista_herramientas($array_guia_arbolado);  ?>
             <?php lista_herramientas($array_capacitacion_arbolado_urbano);  ?>
-            <?php lista_herramientas($array_directorio_verde);  ?> 
-
         </ul>
 
         <?php
-
         #Agregar condicional para el botón 2 del sitio
-
         #Agregar el script con los nuevos pop-ups
-
         #Agregar el formulario para poder descargar el directorio.
-
         # Agregar los scripts
+
         ?>
-            <script>
-                document.addEventListener('DOMContentLoaded', ()=> {
-                    /* custom modals tools */
-                    function openModal(btnOpen, modal, btnClose) {
-                        const backdropContent = document.querySelector("#customBackdrop");
-
-                        document.getElementById(btnOpen).addEventListener("click", function () {
-                            document.getElementById(modal).style.display = "block";
-                            backdropContent.classList.remove('d-none'); 
-                        }); 
-
-                        document.getElementById(btnClose).addEventListener("click", function () {
-                            document.getElementById(modal).style.display = "none";
-                            backdropContent.classList.add('d-none'); 
-                        });
-
-                    }
-    
-                    /** Modal Nauralist */
-                    openModal("btn<?php echo sanitize_title($array_Naturalist['titulo']); ?>", "modal<?php echo sanitize_title($array_Naturalist['titulo']); ?>", "closeModal<?php echo sanitize_title($array_Naturalist['titulo']); ?>");
-                    openModal("btn<?php echo sanitize_title($array_IDArbol['titulo']); ?>", "modal<?php echo sanitize_title($array_IDArbol['titulo']); ?>", "closeModal<?php echo sanitize_title($array_IDArbol['titulo']); ?>"); 
-                    openModal("btn<?php echo sanitize_title($array_MiPolicia_App['titulo']); ?>", "modal<?php echo sanitize_title($array_MiPolicia_App['titulo']); ?>", "closeModal<?php echo sanitize_title($array_MiPolicia_App['titulo']); ?>");
-                    openModal("btn<?php echo sanitize_title($array_directorio_verde['titulo']); ?>", "modal<?php echo sanitize_title($array_directorio_verde['titulo']); ?>", "closeModal<?php echo sanitize_title($array_directorio_verde['titulo']); ?>");
-                    // openModal("btnArbolEncolonia", "modalArbolEncolonia", "closeModalArbolEncolonia"); 
-                    // openModal("btnPlantarArbol", "modalPlantarArbol", "closeModalPlantarArbol"); 
-
-
-                    // Cambiar img cuando pasemos el mouse sobre la imágen de Naturalist
-                    const btnNaturalist = document.querySelector('#btn<?php echo sanitize_title($array_Naturalist['titulo']); ?>');
-                    const naturalistImgWhite = document.querySelector('#btn<?php echo sanitize_title($array_Naturalist['titulo']); ?> .img-white');
-                    const naturalistImgBlack = document.querySelector('#btn<?php echo sanitize_title($array_Naturalist['titulo']); ?> .img-black');
-
-                    naturalistImgWhite.classList.add('d-none');
-
-                    btnNaturalist.addEventListener('mouseover', ()=>{
-                        naturalistImgWhite.classList.remove('d-none');
-                        naturalistImgBlack.classList.add('d-none');
-
-                    })
-
-                    btnNaturalist.addEventListener('mouseout', ()=>{
-                        naturalistImgWhite.classList.add('d-none');
-                        naturalistImgBlack.classList.remove('d-none');
-                    })                    
-                })
-            </script>
-
-            <style>
-                .custom-backdrop  {
-                    top: -330px!important;
-                }
-            </style>
         <?php
     
     }
 
 ?> 
 
-    <?php # Herramientas ?>
-    <div class="hero-tools" style=" padding-top: 70px; padding-bottom: 100px;" id="tools-section">
-        <div class="text-acciones" style="margin-bottom: 100px;">
-            <h2 class="text-center display-4 verde-primary fw-bold"> Herramientas </h2>
-        </div>
+<?php # Herramientas ?>
+<div class="hero-tools" style=" padding-top: 70px; padding-bottom: 100px;" id="tools-section">
+    <div class="text-acciones" style="margin-bottom: 100px;">
+        <h2 class="text-center display-4 verde-primary fw-bold"> Herramientas </h2>
+    </div>
 
+    <div class="subhero-tools" style="background: rgba(33, 137, 30, .8);" >
+        <!-- Contenedor  -->
+        <div class="container container-tools ">
+            <div class="row row-cols-1 row-cols-lg-2 justify-content-center justify-content-md-evenly sections-tools">
+                <?php #sección celular ?>  
+                <div class="col d-flex justify-content-center">
 
-        <div class="subhero-tools" style="background: rgba(33, 137, 30, .8);" >
-            <!-- Contenedor  -->
-            <div class="container container-tools ">
-                <div class="row row-cols-1 row-cols-lg-2 justify-content-center justify-content-md-evenly sections-tools">
+                    <?php # card telefono  ?>
+                    <div class="card border-0 bg-transparent container-movil-tool">
+                        <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/movil_15.png" class="img-fluid img-content-tool" alt="">
 
-                    <!-- Información de la sección -->
-                    <div class="col d-grid align-items-center info-section">
-                        <div class="card d-grid align-items-center bg-transparent border-0">
-                            <div class="card-body bg-transparent">               
+                        <div class="letter-content-tool">
 
-                                <h2 class="text-center text-white fw-light">
-                                    Conoce las herramientas disponibles para ciudar y registrar los árboles de tu ciudad
-                                </h2>
-                            </div>
+                            <div class="custom-backdrop d-none" id="customBackdrop"></div>
+                            <?php #Modales dentro del celular ?>
+
+                                <?php echo contenido_herramientsa($array_Naturalist, $array_IDArbol, $array_MiPolicia_App, $array_guia_arbolado, $array_capacitacion_arbolado_urbano); ?>
 
                         </div>
 
                     </div>
+                </div>
 
-                    <?php #sección celular ?>  
-                    <div class="col d-flex justify-content-center">
+                <? # Información de la sección ?>
+                <div class="col d-grid align-items-center info-section">
+                    <div class="card d-grid align-items-center bg-transparent border-0">
+                        <div class="card-body bg-transparent">               
 
-                        <?php # card telefono  ?>
-                        <div class="card border-0 bg-transparent container-movil-tool">
-                            <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/movil_15.png" class="img-fluid img-content-tool" alt="">
-
-                            <div class="letter-content-tool">
-
-                                <div class="custom-backdrop d-none" id="customBackdrop"></div>
-                                <?php #Modales dentro del celular ?>
-
-                                    <?php echo contenido_herramientsa($array_Naturalist, $array_IDArbol, $array_MiPolicia_App, $array_guia_arbolado, $array_capacitacion_arbolado_urbano, $array_directorio_verde); ?>
-
-                            </div>
-
+                            <h2 class="text-center text-white fw-light">
+                                Conoce las herramientas disponibles para ciudar y registrar los árboles de tu ciudad
+                            </h2>
                         </div>
-                    </div>
 
+                    </div>
 
                 </div>
             </div>
-        </div>
-
-
-    </div>
-
-    <?php # Sponsor Section ?>
-    <div class="container" id="sponsors-section">
-        <div class="text-acciones" style="margin-top: 50px;">
-            <h2 class="text-center display-4 verde-primary fw-bold"> 
-                Aliados
-            </h2>
-        </div>
-
-        <div class="row row-cols-1 row-cols-md-auto justify-content-evenly align-items-center my-5 p-4 p-md-0 content_sponsors_logo" style="margin-top: 80px; margin-bottom: 80px;">
-            <div class="col shadow d-flex justify-content-center my-3">
-                <div class="card d-grid align-items-center justify-content-center border-0"> 
-                    <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/LOGO_BIMBO_2025.png" class="img-fluid" width="200" alt="Logo Grupo Bimbo">
-                </div>
-                
-            </div>
-
-            <div class="col shadow my-3">
-                <div class="card d-grid align-items-center border-0 ">
-                    <div class="card-body">
-                        <h2 class="fw-bold text-center">Fundación Pepe</h2>
-                    </div>
-                
-                </div>
-                
-            </div>        
         </div>
     </div>
 
-    <?php # Sección reporta ?>
-    <div class="hero-reporta" id="report-section" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<?php echo get_template_directory_uri(); ?>/src/imgs/Centinelas_Dinamos_CDMX_BrandonTovar_2016_Centinelas_ArbolUrbano.jpg'); background-size: cover; background-position: 10% 80%; background-repeat: no-repeat; background-attachment: fixed; padding-top: 20px; padding-bottom:20px;">
-        <div class="container" style="margin-top: 130px; margin-bottom: 80px;">
-            <div class="text-acciones" style="margin-top: 50px; margin-bottom: 50px;">
-                <h2 class="text-center text-white h1 fw-bold">
-                    ¿Has sido testigo de alguna mala práctica o irregularidad en el arbolado urbano? 
-                </h2>
 
-            </div>
+</div>
 
+<?php # Sponsor Section ?>
+<div class="container" id="sponsors-section">
+    <div class="text-acciones" style="margin-top: 50px;">
+        <h2 class="text-center display-4 verde-primary fw-bold"> 
+            Aliados
+        </h2>
+    </div>
 
-            <div class="row row-cols-1 justify-content-evenly ">
-
-                <div class="col d-grid align-items-center justify-content-center" >
-                    <div class="card border-0 bg-transparent">
-
-                        <p class="text-center h5 text-white fw-light">
-                            Tu participación es muy importante para mejorar nuestro entorno. Si has observado alguna mala práctica o irregularidad en el arbolado de la Ciudad de México, puedes hacer tu reporte directamente a la PAOT.
-                            
-                        </p>
-                        <p class="text-center h5 text-white fw-light" style="margin-top:20px; margin-bottom:20px;">Haz tu reporte a la PAOT a través del siguiente botón:</p>
-                    </div>
-                    
-                </div>
-
-                <div class="col-12 d-flex justify-content-center" style="margin-top: 50px; margin-bottom: 50px;">
-
-                    <button class="btn btn-success" style="width: 300px;padding: 15px; border-radius: 50px!important; font-size: 22px;">
-                        <a class="text-white text-center text-decoration-none" target="_blank" href="https://paot.org.mx/denunciantes/inicia-tu-denuncia.php">Reporta</a>
-                    </button>
-                        
-                </div>
-                
+    <div class="row row-cols-1 row-cols-md-auto justify-content-evenly align-items-center my-5 p-4 p-md-0 content_sponsors_logo" style="margin-top: 80px; margin-bottom: 80px;">
+        <div class="col shadow d-flex justify-content-center my-3">
+            <div class="card d-grid align-items-center justify-content-center border-0"> 
+                <img src="<?php echo get_template_directory_uri(); ?>/src/imgs/LOGO_BIMBO_2025.png" class="img-fluid" width="200" alt="Logo Grupo Bimbo">
             </div>
             
         </div>
-    </div>
 
-    <?php # Sección donativo ?>
-    <div class="container d-none" style="margin-top: 100px; margin-bottom: 100px;">
+        <div class="col shadow my-3">
+            <div class="card d-grid align-items-center border-0 ">
+                <div class="card-body">
+                    <h2 class="fw-bold text-center">Fundación Pepe</h2>
+                </div>
+            
+            </div>
+            
+        </div>        
+    </div>
+</div>
+
+<?php # Sección reporta ?>
+<div class="hero-reporta" id="report-section" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('<?php echo get_template_directory_uri(); ?>/src/imgs/Centinelas_Dinamos_CDMX_BrandonTovar_2016_Centinelas_ArbolUrbano.jpg'); background-size: cover; background-position: 10% 80%; background-repeat: no-repeat; background-attachment: fixed; padding-top: 20px; padding-bottom:20px;">
+    <div class="container" style="margin-top: 130px; margin-bottom: 80px;">
         <div class="text-acciones" style="margin-top: 50px; margin-bottom: 50px;">
-            <h2 class="text-center display-4 verde-primary fw-bold">
-                ¡Súmate y obtén una recompensa!
+            <h2 class="text-center text-white h1 fw-bold">
+                ¿Has sido testigo de alguna mala práctica o irregularidad en el arbolado urbano? 
             </h2>
+
         </div>
 
+
+        <div class="row row-cols-1 justify-content-evenly ">
+
+            <div class="col d-grid align-items-center justify-content-center" >
+                <div class="card border-0 bg-transparent">
+
+                    <p class="text-center h5 text-white fw-light">
+                        Tu participación es muy importante para mejorar nuestro entorno. Si has observado alguna mala práctica o irregularidad en el arbolado de la Ciudad de México, puedes hacer tu reporte directamente a la PAOT.
+                        
+                    </p>
+                    <p class="text-center h5 text-white fw-light" style="margin-top:20px; margin-bottom:20px;">Haz tu reporte a la PAOT a través del siguiente botón:</p>
+                </div>
+                
+            </div>
+
+            <div class="col-12 d-flex justify-content-center" style="margin-top: 50px; margin-bottom: 50px;">
+
+                <button class="btn btn-success" style="width: 300px;padding: 15px; border-radius: 50px!important; font-size: 22px;">
+                    <a class="text-white text-center text-decoration-none" target="_blank" href="https://paot.org.mx/denunciantes/inicia-tu-denuncia.php">Reporta</a>
+                </button>
+                    
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+<?php # Sección donativo ?>
+<div class="container d-none" style="margin-top: 100px; margin-bottom: 100px;">
+    <div class="text-acciones" style="margin-top: 50px; margin-bottom: 50px;">
+        <h2 class="text-center display-4 verde-primary fw-bold">
+            ¡Súmate y obtén una recompensa!
+        </h2>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col d-flex justify-content-center">
+                
+        </div>
+    </div>
+</div>
+
+
+<?php # Sección Formulario ?>
+<div class="container container_contacto-ac" id="recognize-section" style="margin-top: 200px; margin-bottom: 200px;">
+    <h1 class="text-center display-4 verde-primary fw-bold">Reconoce </h1>
+
+    <div class="row justify-content-center text-formulario"> 
+        <div class="col-7">
+            <p class="text-center h5 text-secondary">
+                Texto para para explicar lo del reconocimiento de árboles.
+            </p>
+        </div>
+    </div>
+
+    <!-- Agregar las categorias del reconocimiento  -->
+    <form class="container formulario_reconoce" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post" enctype="multipart/form-data">
+        <?php wp_nonce_field('submit_contact_form', 'formulario_reconoce'); ?>
+        
+        <div class="row justify-content-center my-4">
+            <div class="col-12 col-md-8 col-lg-6">
+                <label class="form-label text-secondary h5" for="name">Nombre completo:</label>
+                <input class="form-control" type="text" id="name" name="name" required>
+            </div>
+        </div>
+
+        <div class="row justify-content-center my-4">
+            <div class="col-12 col-md-8 col-lg-6">
+                <label class="form-label text-secondary h5" for="email">Correo:</label>
+                <input class="form-control" type="email" id="email" name="email" >
+            </div>
+        </div>
+        
+        <div class="row justify-content-center my-4">
+            <div class="col-12 col-md-8 col-lg-6">
+                <label class="form-label text-secondary h5" for="afterPhoto">Foto del después:</label>
+                <input class="form-control" type="file" id="afterPhoto" accept="image/*" name="afterPhoto" required>
+            </div>
+        </div>
+
+        <div class="row justify-content-center my-4">
+            <div class="col-12 col-md-8 col-lg-6">
+                <label class="form-label text-secondary h5" for="message">Describe la acción realizada:</label>
+                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+        </div>
+
+        <div class="row justify-content-center my-4">
+            <div class="col-12 col-md-8 col-lg-6">
+                <input class="btn btn-success text-white w-100 " type="submit" name="formulario_reconoce" value="Enviar reconocimiento">
+            </div>
+        </div>
+    </form>
+
+    <!-- Mensaje  -->
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col d-flex justify-content-center">
-                   
+            <div class="col-md-8 my-5">
+                <div class="mensaje-formulario card border-0 p-3 text-white text-center" id="mensaje-formulario" style="opacity: 0; transition: opacity 0.5s ease-out;">
+
+                </div>
             </div>
         </div>
     </div>
 
+</div>
 
-    <?php # Sección Formulario ?>
-    <div class="container container_contacto-ac" id="recognize-section" style="margin-top: 200px; margin-bottom: 200px;">
-        <h1 class="text-center display-4 verde-primary fw-bold">Reconoce </h1>
+<?php #Script Herramientas?>
+<script>
+    document.addEventListener('DOMContentLoaded', ()=> {
+        /* custom modals tools */
+        function openModal(btnOpen, modal, btnClose) {
+            const backdropContent = document.querySelector("#customBackdrop");
 
-        <div class="row justify-content-center text-formulario"> 
-            <div class="col-7">
-                <p class="text-center h5 text-secondary">
-                    Texto para para explicar lo del reconocimiento de árboles.
-                </p>
-            </div>
-        </div>
+            document.getElementById(btnOpen).addEventListener("click", function () {
+                document.getElementById(modal).style.display = "block";
+                backdropContent.classList.remove('d-none'); 
+            }); 
 
-        <!-- Agregar las categorias del reconocimiento  -->
-        <form class="container formulario_reconoce" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post" enctype="multipart/form-data">
-            <?php wp_nonce_field('submit_contact_form', 'formulario_reconoce'); ?>
-            
-            <div class="row justify-content-center my-4">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <label class="form-label text-secondary h5" for="name">Nombre completo:</label>
-                    <input class="form-control" type="text" id="name" name="name" required>
-                </div>
-            </div>
+            document.getElementById(btnClose).addEventListener("click", function () {
+                document.getElementById(modal).style.display = "none";
+                backdropContent.classList.add('d-none'); 
+            });
 
-            <div class="row justify-content-center my-4">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <label class="form-label text-secondary h5" for="email">Correo:</label>
-                    <input class="form-control" type="email" id="email" name="email" >
-                </div>
-            </div>
-            
-            <div class="row justify-content-center my-4">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <label class="form-label text-secondary h5" for="afterPhoto">Foto del después:</label>
-                    <input class="form-control" type="file" id="afterPhoto" accept="image/*" name="afterPhoto" required>
-                </div>
-            </div>
+        }
 
-            <div class="row justify-content-center my-4">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <label class="form-label text-secondary h5" for="message">Describe la acción realizada:</label>
-                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                </div>
-            </div>
+        /** Modal Nauralist */
+        openModal("btn<?php echo sanitize_title($array_Naturalist['titulo']); ?>", "modal<?php echo sanitize_title($array_Naturalist['titulo']); ?>", "closeModal<?php echo sanitize_title($array_Naturalist['titulo']); ?>");
+        openModal("btn<?php echo sanitize_title($array_IDArbol['titulo']); ?>", "modal<?php echo sanitize_title($array_IDArbol['titulo']); ?>", "closeModal<?php echo sanitize_title($array_IDArbol['titulo']); ?>"); 
+        openModal("btn<?php echo sanitize_title($array_MiPolicia_App['titulo']); ?>", "modal<?php echo sanitize_title($array_MiPolicia_App['titulo']); ?>", "closeModal<?php echo sanitize_title($array_MiPolicia_App['titulo']); ?>");
+        // openModal("btn<?php # echo sanitize_title($array_directorio_verde['titulo']); ?>", "modal<?php # echo sanitize_title($array_directorio_verde['titulo']); ?>", "closeModal<?php # echo sanitize_title($array_directorio_verde['titulo']); ?>");
+        // openModal("btnArbolEncolonia", "modalArbolEncolonia", "closeModalArbolEncolonia"); 
+        // openModal("btnPlantarArbol", "modalPlantarArbol", "closeModalPlantarArbol"); 
 
-            <div class="row justify-content-center my-4">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <input class="btn btn-success text-white w-100 " type="submit" name="formulario_reconoce" value="Enviar reconocimiento">
-                </div>
-            </div>
-        </form>
 
-        <!-- Mensaje  -->
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 my-5">
-                    <div class="mensaje-formulario card border-0 p-3 text-white text-center" id="mensaje-formulario" style="opacity: 0; transition: opacity 0.5s ease-out;">
+        // Cambiar img cuando pasemos el mouse sobre la imágen de Naturalist
+        const btnNaturalist = document.querySelector('#btn<?php echo sanitize_title($array_Naturalist['titulo']); ?>');
+        const naturalistImgWhite = document.querySelector('#btn<?php echo sanitize_title($array_Naturalist['titulo']); ?> .img-white');
+        const naturalistImgBlack = document.querySelector('#btn<?php echo sanitize_title($array_Naturalist['titulo']); ?> .img-black');
 
-                    </div>
-                </div>
-            </div>
-        </div>
+        naturalistImgWhite.classList.add('d-none');
 
-    </div>
+        btnNaturalist.addEventListener('mouseover', ()=>{
+            naturalistImgWhite.classList.remove('d-none');
+            naturalistImgBlack.classList.add('d-none');
+
+        })
+
+        btnNaturalist.addEventListener('mouseout', ()=>{
+            naturalistImgWhite.classList.add('d-none');
+            naturalistImgBlack.classList.remove('d-none');
+        })                    
+    })
+</script>
