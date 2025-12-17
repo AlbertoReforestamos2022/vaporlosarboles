@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelector('#speciality-option').value = "";
                 
                 // Limpiar cards y mostrar mensaje inicial
-                mostrarMensajeInicial();
+                pantallaInicial();
                 
                 // Quitar resaltado
                 if (currentStateLayer) {
@@ -204,8 +204,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ========== MOSTRAR MENSAJE INICIAL ==========
-    function mostrarMensajeInicial() {
-        const contenedor = document.getElementById("instrucciones");
+    // cambiar nombre de la función
+    function pantallaInicial() {
+        // const contenedor = document.getElementById("instrucciones");
+        const contentResults = document.querySelector('#content-results');
+        
+            if(contentResults.classList.contains('asdf')) {
+                contentResults.classList.add('d-none'); 
+                contentResults.classList.remove('asdf');
+            }
 
     }
 
@@ -237,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('Estados con especialistas:', Array.from(estadosConEspecialistas));
                     
                     // NO mostrar cards al inicio, solo mensaje
-                    mostrarMensajeInicial();
+                    pantallaInicial();
 
                     // Llenar select de especialidades
                     llenarSelectEspecialidad();
@@ -296,12 +303,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Si no hay filtros activos, mostrar mensaje inicial
         if (!filtroActivo.estado && !filtroActivo.especialidad) {
-            mostrarMensajeInicial();
+            pantallaInicial();
             return;
         }
-
-        console.log('Filtros aplicados:', filtroActivo);
-        console.log('Resultados:', especialistasFiltrados.length);
 
         // Mostrar resultados o mensaje de "sin resultados"
         if (especialistasFiltrados.length === 0) {
@@ -377,15 +381,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         contenedor.appendChild(containerResults); 
+        
+        // mostrar contenedor con resultados
+        const contentResults = document.querySelector('#content-results');
+        
+        if(contentResults.classList.contains('d-none')) {
+            contentResults.classList.remove('d-none');
+            contentResults.classList.add('asdf');
+        }
 
         // Mostrar contador - resultados 
-        const contador = document.createElement("div");
-        contador.className = "alert alert-success m-3";
-        contador.innerHTML = `
-            <strong>${especialistasFiltrados.length}</strong> especialista${especialistasFiltrados.length !== 1 ? 's' : ''} encontrado${especialistasFiltrados.length !== 1 ? 's' : ''}.
-        `;
+        // const contador = document.createElement("div");
+        // contador.className = "alert alert-success m-3";
+        // contador.innerHTML = `
+        //     <strong>${especialistasFiltrados.length}</strong> especialista${especialistasFiltrados.length !== 1 ? 's' : ''} encontrado${especialistasFiltrados.length !== 1 ? 's' : ''}.
+        // `;
 
-        resultadosEncontrados.appendChild(contador); 
+        // resultadosEncontrados.appendChild(contador); 
     }
 
     // ========== RESALTAR ESTADO EN EL MAPA ==========
@@ -420,7 +432,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Hacer zoom al estado
             const bounds = currentStateLayer.getBounds();
-            map.fitBounds(bounds, { padding: [50, 50] });
+            map.fitBounds(bounds, { padding: [20, 20] });
         } else {
             console.warn('Estado no encontrado en GeoJSON:', claveEstado);
         }

@@ -177,45 +177,49 @@
 
 <?php # Directorio Verde ?>
 <div class="container directorio-container" style="margin-top: 40px;" >
-    <p class="text-start h2" style="color: #2C8E2A!important;" >Conoce nuestro </br> directorio verde </p>
+    <h2 class="text-center display-4 fw-bold" style="color: #2C8E2A!important;" >Conoce nuestro directorio verde </h2>
 
-    <div class="row row-cols-1 row-cols-lg-2 flex-row-reverse justify-content-center align-items-center "  id="directorio_content"> 
-        <?php # Cards especialistas content?>
-        <div class="col col-lg-4">
-            <div class="row row-cols-1 align-items-center">
-                <?php ## Filtros de busqueda ?>
-                <div class="col">
-                    <div class="row">
-                        <div class="instrucciones" id="instrucciones">
-                            <div class="mensaje-inicial p-2">
-                                <p class="text-muted">Selecciona un estado o especialidad del menú desplegable para ver los especialistas disponibles.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <?php ## Seleccionar por estado ?>
-                        <div class="col-6 select-option" stye="margin-top: 5px; margin-bottom: 5px;">
-                            <h4 class="text-secondary"> Selecciona por estado </h4>
-                            <select class="bg-primary border-0 rounded text-white p-2" value="Filtro por estado" name="states-option" id="states-option">
-                            </select>
-                        </div>
-                        
-                        <?php ## Seleccionar por especialidada ?> 
-                        <div class="col-6 select-option" stye="margin-top: 5px; margin-bottom: 5px;">
-                            <h4 class="text-secondary"> Selecciona por especialidad </h4>
-                            <select class="bg-primary border-0 rounded text-white p-2" value="Filtro por especialidad" name="speciality-option" id="speciality-option">
-                            </select>
-                        </div>
-                    </div>
+    <div class="row justify-content-center">
+        <?php ## Filtros de busqueda ?>
+        <div class="col-12 col-md-10 col-lg-8">
+            <div class="row">
+                <div class="instrucciones" id="instrucciones">
+                    <?php # Mensaje inicial ?>
+                    <div class="mensaje-inicial p-2">
+                        <h5 class="text-muted text-center">Selecciona un estado o especialidad del menú desplegable para ver los especialistas disponibles.</h5>
+                    </div>                                
+                </div>
+            </div>
+            <div class="row">
+                <?php ## Seleccionar por estado ?>
+                <div class="col-6 select-option" stye="margin-top: 5px; margin-bottom: 5px;">
+                    <h4 class="text-secondary"> Selecciona por estado </h4>
+                    <select class="bg-primary border-0 rounded text-white p-2" value="Filtro por estado" name="states-option" id="states-option">
+                    </select>
+                </div>
                 
-                </div> 
-                
+                <?php ## Seleccionar por especialidada ?> 
+                <div class="col-6 select-option" stye="margin-top: 5px; margin-bottom: 5px;">
+                    <h4 class="text-secondary"> Selecciona por especialidad </h4>
+                    <select class="bg-primary border-0 rounded text-white p-2" value="Filtro por especialidad" name="speciality-option" id="speciality-option">
+                    </select>
+                </div>
+            </div>
+        
+            <div class="row">
                 <?php # Resultados ?>
                 <div class="col-12 my-4">
                     <div class="resultados" id="resultados_encontrados">
                     </div>
-                </div>
+                </div>                
+            </div>
+        </div> 
+    </div>
 
+    <div class="row row-cols-1 row-cols-lg-2 flex-row-reverse justify-content-center align-items-center "  id="directorio_content"> 
+        <?php # Cards especialistas content?>
+        <div class="col col-lg-6 d-none" id="content-results">
+            <div class="row row-cols-1 align-items-center">
                 <?php # cards acciones?>          
                 <div class="col d-flex justify-content-center">
                     <div class="card border-0 bg-transparent" id="results-specialists">
@@ -226,9 +230,9 @@
         </div>
 
         <?php # Mapa acciones ?>
-        <div class="col col-lg-8 py-3">
+        <div class="col col-lg-6 py-3 d-none d-lg-block">
             <div class="card d-flex justify-content-center border-0">
-                <div class="shadow" id="map" style="height: 500px; max-width:800px; border-radius: 20px;">
+                <div class="shadow" id="map" style="height: 300px; max-width:600px; border-radius: 20px;">
 
                 </div>
             </div>
